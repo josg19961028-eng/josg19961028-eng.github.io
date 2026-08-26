@@ -1,0 +1,76 @@
+:root {
+  font-family:
+    Inter,
+    Pretendard,
+    "Noto Sans KR",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: #172033;
+  background: #f9fafb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --color-primary: #2458b8;
+  --color-text-primary: #172033;
+  --color-text-secondary: #657086;
+  --color-text-tertiary: #9ba6b8;
+  --color-border: #dce3ef;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f1f5fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--color-text-primary);
+  background: #f9fafb;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+/*
+ * 키보드 사용자가 현재 초점 위치를 놓치지 않도록
+ * 마우스 클릭과 구분되는 포커스 표시를 제공한다.
+ */
+:focus-visible {
+  outline: 3px solid rgb(36 88 184 / 35%);
+  outline-offset: 4px;
+}
+
+/* 사용자가 모션 감소를 설정했다면 부드러운 이동과 전환 효과를 줄인다. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
