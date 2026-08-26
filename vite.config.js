@@ -1,13 +1,19 @@
+import { existsSync } from 'node:fs'
+
 import { cloudflare } from '@cloudflare/vite-plugin'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { sites } from '@openai/sites-vite-plugin'
 
+const hasSitesHostingConfig =
+  process.env.GITHUB_ACTIONS !== 'true' &&
+  existsSync(new URL('./.openai/hosting.json', import.meta.url))
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    sites(),
+    ...(hasSitesHostingConfig ? [sites()] : []),
     cloudflare({
       viteEnvironment: {
         name: 'server',
